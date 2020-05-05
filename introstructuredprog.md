@@ -2,7 +2,7 @@
 
 ## Team:
 
-Saul Alberto Barrera García - GitHub  
+Saul Alberto Barrera García - GitHub  [https://github.com/saulbg/Programming2]  
 Mario Solórzano Ventura - GitHub  
 
 
@@ -33,8 +33,13 @@ Some examples of object-oriented programming are c++, c#, java, perl, ruby, etc.
 
 ## Methods of Programming Paradigms
 -Interpreted Programming:  
-
+Unlike compiling, it does not need to be preprocessed by a compiler, that is, it executes the sequence of instructions without the need to read and translate everything.  
+   
 -Compiled programming:  
+It is a programming language whose implementations are normally compilers (translators that generate machine code from the source code). The keyword that describes a compiled pogramming is the compiled do like a step else (first you write te code and after that code is translated to bytecode and after a language that the machine can understand.  
+## Source Code
+It is a set of lines of text with the steps the computer must follow to run a program. Is wrote in a programming language but is not ready to execute, it needs to be translated by a compiler.  
+
 
 
 
@@ -60,3 +65,6 @@ https://www.ecured.cu/Programacion_Modular
 https://www.ecured.cu/Programacion_estructuradahttps://www.ecured.cu/Programacion_estructurada  
 https://es.wikipedia.org/wiki/Arquitectura_de_Von_Neumann  
 https://www.ecured.cu/Programacion_Orientada_a_Objetos
+https://es.wikipedia.org/wiki/Lenguaje_de_programacion_compilado
+https://www.ecured.cu/Lenguaje_interpretado
+
