@@ -211,6 +211,29 @@ A distributed version control system (DVCS) is a type of version control where t
 
 Changes to files are tracked between computers. For example, my workstation and yours. In the beginning, this required specific coordination strategies to maintain consistency in projects, so all the developers could keep track of what was happening to files at any given time.
 
+
+
+## Git Chapter 3  
+### Branches in nutshell
+As you remember from  Getting started, Git doesn't store data as a series of changesets or differences, but instead as a series of snapshots.  
+When you make a commit, Git stores a commit object that contains a pointer to the snapshot of the content you staged. This contains a pointers to the commit or commits that directly came before this commit. This metadata is stored by git is called "blob" and git uses "tree" to list the directories of each blob so the commit works as a pointer.  
+A branch in Git is simply a lightweight movable pointer to one of these commits. The default branch name in Git is master. Every time you commit, the master branch pointer moves forward automatically.  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\branch.PNG)  
+
+### Creating a New Branch  
+To create a new branch you have to use the command _git branch nameofbranch_. This creates a new pointer for you to move around, is important know this commands just create a new branch but it doesn't move to the new branch.  
+You can use the command _git log --all_ to see all the branches.  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\branches.PNG)  
+
+### Switching branches  
+To switch to an existing branch, you need to enter the command _git checkout nameofbranch_. This moves HEAD to nameofbranch. For example:  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\switch.PNG)  
+The important thing here is to check in which branch you are for later merge your commits of this branchs into the master branch.  
+ 
+
+
+
+
 ### References
 
 + https://www.ecured.cu/Paradigmas_de_programacion
