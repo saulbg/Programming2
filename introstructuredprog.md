@@ -218,7 +218,7 @@ Changes to files are tracked between computers. For example, my workstation and 
 As you remember from  Getting started, Git doesn't store data as a series of changesets or differences, but instead as a series of snapshots.  
 When you make a commit, Git stores a commit object that contains a pointer to the snapshot of the content you staged. This contains a pointers to the commit or commits that directly came before this commit. This metadata is stored by git is called "blob" and git uses "tree" to list the directories of each blob so the commit works as a pointer.  
 A branch in Git is simply a lightweight movable pointer to one of these commits. The default branch name in Git is master. Every time you commit, the master branch pointer moves forward automatically.  
-![Sorry, is not working](https://imgur.com/7LGkfzo)
+![Sorry, is not work](https://imgur.com/OV2FBIr)
 
 ### Creating a New Branch  
 To create a new branch you have to use the command _git branch nameofbranch_. This creates a new pointer for you to move around, is important know this commands just create a new branch but it doesn't move to the new branch.  
@@ -242,7 +242,7 @@ After you fix a problem or you just don't want to have the old branch you can de
 ### Basic Merge Conflicts  
 Occasionally, this process doesn’t go smoothly. If you changed the same part of the same file differently in the two branches you’re merging, Git won’t be able to merge them cleanly.  
 You can find an error like this.
-![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im5.PNG)  
+![Sorry, is not working](https://imgur.com/7LGkfzo)  
 Git hasn’t automatically created a new merge commit. It has paused the process while you resolve the conflict. If you want to see which files are unmerged at any point after a merge conflict, you can run _git status_  
 This means the version in HEAD (your master branch, because that was what you had checked out when you ran your merge command) is the top part of that block.  
 After you’ve resolved each of these sections in each conflicted file, run git add on each file to mark it as resolved.
