@@ -218,20 +218,85 @@ Changes to files are tracked between computers. For example, my workstation and 
 As you remember from  Getting started, Git doesn't store data as a series of changesets or differences, but instead as a series of snapshots.  
 When you make a commit, Git stores a commit object that contains a pointer to the snapshot of the content you staged. This contains a pointers to the commit or commits that directly came before this commit. This metadata is stored by git is called "blob" and git uses "tree" to list the directories of each blob so the commit works as a pointer.  
 A branch in Git is simply a lightweight movable pointer to one of these commits. The default branch name in Git is master. Every time you commit, the master branch pointer moves forward automatically.  
-![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\branch.PNG)  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im1.PNG)  
 
 ### Creating a New Branch  
 To create a new branch you have to use the command _git branch nameofbranch_. This creates a new pointer for you to move around, is important know this commands just create a new branch but it doesn't move to the new branch.  
 You can use the command _git log --all_ to see all the branches.  
-![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\branches.PNG)  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im2.PNG)  
 
 ### Switching branches  
 To switch to an existing branch, you need to enter the command _git checkout nameofbranch_. This moves HEAD to nameofbranch. For example:  
-![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\switch.PNG)  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im3.PNG)  
 The important thing here is to check in which branch you are for later merge your commits of this branchs into the master branch.  
- 
 
+### Basic Branching and Merging  
+Supose that you are doing a project and have a couple of commits on the _master_ branch. To create a new branch and switch to it at the same time you can use the command _git checkout -b nameofbranch_. So the new commits are going to be stored in this branch. You can swtich to the _master_ branch and you will not have the new changes that you did because you did it in the other branch.
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im4.PNG)  
+So you will have a diverged project, this means that is possible to switch back and forth between the branches and merge them together when is ready.  
 
+### Basic Merging  
+To merge branches you need to use the command _git merge_  
+After you fix a problem or you just don't want to have the old branch you can delete it using the command _git branch -d nameofyourbranch  
+
+### Basic Merge Conflicts  
+Occasionally, this process doesn’t go smoothly. If you changed the same part of the same file differently in the two branches you’re merging, Git won’t be able to merge them cleanly.  
+You can find an error like this.
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im5.PNG)  
+Git hasn’t automatically created a new merge commit. It has paused the process while you resolve the conflict. If you want to see which files are unmerged at any point after a merge conflict, you can run _git status_  
+This means the version in HEAD (your master branch, because that was what you had checked out when you ran your merge command) is the top part of that block.  
+After you’ve resolved each of these sections in each conflicted file, run git add on each file to mark it as resolved.
+So you can do your commit to save your changes and upload it.  
+
+### Branch Management  
+The git branch command does more than just create and delete branches. If you run it with no arguments, you get a simple listing of your current branches. For example:  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im6.PNG)  
+The character * indicates the branch that it's currently checked out.  
+To see the last commit on the branches you can use the command _git branch -v_  
+The useful --merged and --no-merged options can filter this list to branches that you have or have not yet merged into the branch you’re currently on.  
+If you have a branch that is not merged yet and you try to delete it using the command _git branch -d_ it will fail, you have to use the command _git branch -D_  
+
+### Branching Workflows  
+There are 3 three-way merge that the developers use:  
++ The _master_ branch is for code that is entirely stable.  
++ _develop_ or _next_ it is used to to test stability.  
++ The _topic_ and check if pass all the tests and don't introduce bugs.  
+
+### Remote Branching  
+Remote references are references (pointers) in your remote repositories, including branches, tags, and so on.  
+You can get a full list of remote references explicitly with git ls-remote <remote>, or git remote show <remote> for remote branches as well as more information.  
+Remote-tracking branches are references to the state of remote branches. They’re local references that you can’t move; Git moves them for you whenever you do any network communication, to make sure they accurately represent the state of the remote repository, you can see them as bookmarks.  
+Remote-tracking branch names take the form <remote>/<branch>.  
+To synchronize your work with a given remote, you run a git fetch <remote> command (in our case, git fetch origin). This command looks up which server “origin” is and fetches any data from it that you don’t yet have, and updates your local database, moving your origin/master pointer to its new, more up-to-date position.  
+
+### Pushing  
+When you want to share a branch with the world, you need to push it up to a remote to which you have write access. You can push up work in the same way you pushed your first branch. Run _git push remote branch_  
+
+### Traking Branches  
+Checking out a local branch from a remote-tracking branch automatically creates what is called a “tracking branch” (and the branch it tracks is called an “upstream branch”).
+If you’re on a tracking branch and type git pull, Git automatically knows which server to fetch from and which branch to merge in. You can use _--track_ to set up a tracking branch.  
+
+### Pulling  
+The command called _git pull_ which is essentially a git fetch immediately followed by a git merge in most cases.  
+_git pull_ will look up what server and branch your current branch is tracking, fetch from that server and then try to merge in that remote branch.  
+
+### Deleting Remote Branches  
+To delete a remote branch you can use the _--delete_ to _git push_  
+
+### Rebasing  
+### The Basic Rebase  
+However, there is another way: you can take the patch of the change that was introduced in C4 and reapply it on top of C3. In Git, this is called rebasing. With the _rebase_ command, you can take all the changes that were committed on one branch and replay them on a different branch.  
+
+### More Interesting Rebases  
+You branched a topic branch (server) to add some server-side functionality to your project, and made a commit. Then, you branched off that to make the client-side changes (client) and committed a few times. Finally, you went back to your server branch and did a few more commits.  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im7.PNG)  
+
+You can take the changes on client that aren’t on server (C8 and C9) and replay them on your master branch by using the --onto option of git rebase:  
+![Sorry, is not working](\Users\sbg27\OneDrive\Imágenes\im8.PNG)  
+
+### The Perils of Rebasing  
+Do not rebase commits that exist outside your repository and that people may have based work on.  
+If you push commits somewhere and others pull them down and base work on them, and then you rewrite those commits with git rebase and push them up again, your collaborators will have to re-merge their work and things will get messy when you try to pull their work back into yours. 
 
 
 ### References
